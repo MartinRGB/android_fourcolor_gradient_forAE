@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cv"
+    android:background="#3f403b"
+    tools:context="com.martinrgb.fcgradient.MainActivity">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:weightSum="2"
+                      android:orientation="vertical" >
+
+
+            <com.martinrgb.fcgradient.DynamicSquareLayout
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <com.martinrgb.fcgradient.LinearGradientView
+                    android:id="@+id/lv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="#FFF"
+                    android:text="LinearGradient"/>
+
+            </com.martinrgb.fcgradient.DynamicSquareLayout>
+
+            <com.martinrgb.fcgradient.DynamicSquareLayout
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <com.martinrgb.fcgradient.FourColorGradientView
+                    android:id="@+id/fcv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="#FFF"
+                    android:text="FourColorGradient - Shape"/>
+
+
+            </com.martinrgb.fcgradient.DynamicSquareLayout>
+
+            <com.martinrgb.fcgradient.DynamicSquareLayout
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <com.martinrgb.fcgradient.FourColorBitmapView
+                    android:id="@+id/fcv2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="#FFF"
+                    android:text="FourColorGradient - Bitmap"/>
+
+
+            </com.martinrgb.fcgradient.DynamicSquareLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
