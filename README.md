@@ -2,11 +2,7 @@
 
 An experiment of implementing After Effect's "4-Color-Gradient"
 
-![image1](https://github.com/MartinRGB/android_fourcolor_gradient_test/blob/master/art/img1.png?raw=true)
-
-![image2](https://github.com/MartinRGB/android_fourcolor_gradient_test/blob/master/art/img2.png?raw=true)
-
-![image3](https://github.com/MartinRGB/android_fourcolor_gradient_test/blob/master/art/img3.png?raw=true)
+![image4](https://github.com/MartinRGB/android_fourcolor_gradient_test/blob/master/art/img4.png?raw=true)
 
 ## Reference 
 
