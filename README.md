@@ -6,6 +6,8 @@ An experiment of implementing After Effect's "4-Color-Gradient"
 
 ![image2](https://github.com/MartinRGB/android_fourcolor_gradient_test/blob/master/art/img2.png?raw=true)
 
+![image3](https://github.com/MartinRGB/android_fourcolor_gradient_test/blob/master/art/img3.png?raw=true)
+
 ## Reference 
 
 1. About Gamma Fix:
