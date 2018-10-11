@@ -20,9 +20,44 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.os.SystemClock;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 public class FourColorBitmapView extends View {
+
+    private Paint linearPaint;
+    private Paint radialPaint1;
+    private Paint radialPaint2;
+
+
+    public FourColorBitmapView(Context context) {
+        super(context);
+        init();
+    }
+
+    public FourColorBitmapView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    public FourColorBitmapView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init();
+    }
+    long start_time;
+    private void init(){
+        start_time = SystemClock.elapsedRealtime();
+        linearPaint = new Paint();
+        radialPaint1 = new Paint();
+        radialPaint2 = new Paint();
+//        PorterDuffXfermode mode = new PorterDuffXfermode(PorterDuff.Mode.DARKEN);
+//        radialPaint1.setXfermode(mode);
+//        radialPaint2.setXfermode(mode);
+    }
+    @Override
+    protected void onSizeChanged(int xNew, int yNew, int xOld, int yOld){
+        super.onSizeChanged(xNew, yNew, xOld, yOld);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -31,9 +66,10 @@ public class FourColorBitmapView extends View {
         int width = getWidth(),height = getHeight();
         int radius = width>=height? height:width;
 
+        float costTime = (float)(SystemClock.elapsedRealtime() - start_time)/1000.0f;
         // Way 1
         Bitmap linearBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ALPHA_8);
-        Paint linearPaint = new Paint();
+
 //        linearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DARKEN));
         Canvas linearCanvas = new Canvas(linearBitmap);
         linearPaint.setShader(new LinearGradient(0, height, width, 0,
@@ -71,19 +107,26 @@ public class FourColorBitmapView extends View {
 
 
         Bitmap radialBitmap1 = Bitmap.createBitmap(radius, radius, Bitmap.Config.ALPHA_8);
-        Paint radialPaint1 = new Paint();
+
         Canvas radialCanvas1 = new Canvas(radialBitmap1);
+//        radialPaint1.setShader(new RadialGradient(0+(float)Math.cos(costTime)*500.f, 0+(float)Math.cos(costTime)*500.f,
+//                radius, Color.RED, Color.TRANSPARENT, Shader.TileMode.MIRROR));
+
         radialPaint1.setShader(new RadialGradient(0, 0,
                 radius, Color.RED, Color.TRANSPARENT, Shader.TileMode.MIRROR));
+
 
         radialCanvas1.drawCircle(0, 0, radius, radialPaint1);
         canvas.drawBitmap(radialBitmap1, 0,0, radialPaint1);
         radialBitmap1.recycle();
 
         Bitmap radialBitmap2 = Bitmap.createBitmap(radius, radius, Bitmap.Config.ALPHA_8);
-        Paint radialPaint2 = new Paint();
+
 //        radialPaint2.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.LIGHTEN));
         Canvas radialCanvas2 = new Canvas(radialBitmap2);
+//        radialPaint2.setShader(new RadialGradient(width+(float)Math.sin(costTime)*500.f, height+(float)Math.sin(costTime)*500.f,
+//                radius, Color.CYAN, Color.TRANSPARENT, Shader.TileMode.MIRROR));
+
         radialPaint2.setShader(new RadialGradient(width, height,
                 radius, Color.CYAN, Color.TRANSPARENT, Shader.TileMode.MIRROR));
 
@@ -91,6 +134,9 @@ public class FourColorBitmapView extends View {
         canvas.drawBitmap(radialBitmap2, 0,0, radialPaint2);
         radialBitmap2.recycle();
 
+        // Repeat
+
+        //postInvalidate();
 
     }
 
@@ -148,27 +194,5 @@ public class FourColorBitmapView extends View {
 
 
 
-    @Override
-    protected void onSizeChanged(int xNew, int yNew, int xOld, int yOld){
-        super.onSizeChanged(xNew, yNew, xOld, yOld);
-    }
 
-    public FourColorBitmapView(Context context) {
-        super(context);
-        init();
-    }
-
-    public FourColorBitmapView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
-    }
-
-    public FourColorBitmapView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init();
-    }
-    long start_time;
-    private void init(){
-        start_time = SystemClock.elapsedRealtime();
-    }
 }
